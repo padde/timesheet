@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Timesheet</title>
+    <title><%= yield(:title) || 'Stundenzettel' %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <div class="no-print">
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "alert alert-#{key}" %>
+    <% end %>
+
+    <% if authenticated? %>
+      <%= link_to 'Sign out', sessions_path, method: :delete %>
+    <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

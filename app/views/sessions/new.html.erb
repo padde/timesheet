@@ -1,0 +1,13 @@
+<%= form_for :session, url: sessions_path do |f| %>
+  <%= f.label :harvest_account_id, "Account ID" %>
+  <br/>
+  <%= f.text_field :harvest_account_id %>
+  <br/>
+  <br/>
+  <%= f.label :harvest_access_token, "Access Token" %>
+  <br/>
+  <%= f.password_field :harvest_access_token %>
+  <br/>
+  <br/>
+  <%= f.submit "Sign in" %>
+<% end %>

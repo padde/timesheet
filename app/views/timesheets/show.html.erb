@@ -1,0 +1,37 @@
+<%- content_for(:title, I18n.transliterate("Stundenzettel #{@selected_client["name"]} #{Date.today.strftime}")) %>
+<div class="no-print">
+<%= form_for :filter, method: :get do |f| %>
+  <%= f.label :client %>
+  <br/>
+  <%= f.select :client_id, @clients.map {|c| [c["name"], c["id"]] }, {}, {onchange: "this.form.submit()"} %>
+<% end %>
+
+Selected client: <%= @selected_client["name"] %>
+
+<hr>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Aufgabe</th>
+      <th>Beschreibung</th>
+      <th class="right">Dauer (h)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @time_entries.each do |entry| %>
+      <tr>
+        <td><%= l Date.parse entry["date"] %></td>
+        <td><%= entry["task"] %></td>
+        <td><%= entry["notes"] %></td>
+        <td class="right"><%= number_with_precision entry["hours"], precision: 2 %></td>
+      </tr>
+    <% end %>
+    <tr class="final">
+      <td colspan="3"><strong>Gesamt</strong></td>
+      <td class="right"><strong><%= number_with_precision @total_hours, precision: 2 %></strong></td>
+    </tr>
+  </tbody>
+</table>

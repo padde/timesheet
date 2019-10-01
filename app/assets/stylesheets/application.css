@@ -13,3 +13,65 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  font-family: 'Arial';
+  line-height: 1.5;
+}
+
+body {
+  margin: 40px;
+}
+
+@page
+{
+  margin: 20mm 20mm 20mm 25mm;
+}
+
+@media print
+{
+  html {
+    font-size: 11pt;
+  }
+
+  body {
+    margin: 0;
+  }
+}
+
+table {
+  width: 100%;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+  border-collapse: collapse;
+}
+
+td, th {
+  vertical-align: top;
+}
+table {
+  border-spacing: 0.3em;
+}
+
+th {
+  white-space: nowrap;
+}
+
+thead tr {
+  border-bottom: 1px solid black;
+}
+tr.final {
+  border-top: 1px solid black;
+}
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+.right {
+  text-align: right;
+}
