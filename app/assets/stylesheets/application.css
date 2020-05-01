@@ -44,13 +44,19 @@ table {
   text-align: left;
   font-variant-numeric: tabular-nums;
   border-collapse: collapse;
+  border-spacing: 0.3em;
+  line-height: 1.2
 }
 
 td, th {
   vertical-align: top;
+  padding: 0.2em;
 }
-table {
-  border-spacing: 0.3em;
+td:first-child, th:first-child {
+  padding-left: 0;
+}
+td:last-child, th:last-child {
+  padding-right: 0;
 }
 
 th {
